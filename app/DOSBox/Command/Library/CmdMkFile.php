@@ -26,5 +26,4 @@ class CmdMkFile extends Command {
         $newFile = new File($fileName, $fileContent);
         $this->getDrive()->getCurrentDirectory()->add($newFile);
     }
-
 }
