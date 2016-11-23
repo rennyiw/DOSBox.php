@@ -27,7 +27,7 @@ class Console {
         while(strcmp(trim($line), "exit") != 0){
             $this->outputter->newLine();
             $this->outputter->printNoLine($this->drive->getPrompt());
-
+			
             try{
                 $char = trim(fread(STDIN, 256));
                 //$char = trim(fgets(STDIN));
@@ -36,9 +36,10 @@ class Console {
                 // do nothing by intention
             }
 
-            $this->invoker->executeCommand($line, $this->outputter);
+            //$this->invoker->executeCommand($line, $this->outputter);
         }
 
-        $this->outputter->printLine("Goodbye!");
+       //$this->outputter->printLine("Goodbye!");
+	   
     }
 }
