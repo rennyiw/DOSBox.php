@@ -36,7 +36,7 @@ class Console {
                 // do nothing by intention
             }
 
-            //$this->invoker->executeCommand($line, $this->outputter);
+            $this->invoker->executeCommand($line, $this->outputter);
         }
 
        //$this->outputter->printLine("Goodbye!");
