@@ -33,7 +33,6 @@ class CmdMkDir extends Command {
             $outputter->printLine(self::PARAMETER_CONTAINS_BACKLASH);
             return true;
         }
-
         return false;
     }
 
