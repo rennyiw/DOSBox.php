@@ -8,6 +8,8 @@ use DOSBox\Filesystem\Directory;
 use DOSBox\Command\BaseCommand as Command;
 
 class CmdMkDir extends Command {
+    
+
     const PARAMETER_CONTAINS_BACKLASH = "At least one parameter denotes a path rather than a directory name.";
 
     public function __construct($commandName, IDrive $drive){
@@ -37,10 +39,32 @@ class CmdMkDir extends Command {
     }
 
     public function execute(IOutputter $outputter){
-        for($i=0; $i < $this->getParameterCount(); $i++) {
-            $this->createDirectory($this->params[$i], $this->getDrive());
+        $currentDirectoryItems = $this->getDrive()->getCurrentDirectory()->getContent();
+        $isExist=false;
+        foreach ($currentDirectoryItems as $item) {
+
+            if($item->isDirectory()){
+                if($item->getName() == $this->params[0]){
+                $isExist=true;
+                }
+            }
+            
+            
         }
+
+
+        if($isExist==true){
+            $outputter->printLine("Sorry, the directory is already exist, choose other directory name" );
+            
+        } else{
+            for($i=0; $i < $this->getParameterCount(); $i++) {
+                $this->createDirectory($this->params[$i], $this->getDrive());
+            }
+        }
+        
     }
+
+
 
     public function createDirectory($newDirectoryName, IDrive $drive) {
         $newDirectory = new Directory($newDirectoryName);
