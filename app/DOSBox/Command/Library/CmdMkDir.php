@@ -44,10 +44,18 @@ class CmdMkDir extends Command {
                 }
             }
         }
+<<<<<<< HEAD
         if($isExist==true){
             $outputter->printLine("Sorry, the directory is already exist, choose other directory name" );
         }
         else{
+=======
+
+
+        if($isExist){
+            $outputter->printLine("Sorry, the directory is already exist, choose other directory name" );
+        } else{
+>>>>>>> d4c3e6c9216621e9d880fc4a7bbb6c1f6c26c38f
             for($i=0; $i < $this->getParameterCount(); $i++) {
                 $this->createDirectory($this->params[$i]." ".$d, $this->getDrive());
 //                $this->createDirectory($this->params[$i], $this->getDrive());

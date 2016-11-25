@@ -36,6 +36,26 @@ class CmdMkDirTest extends DOSBoxTestCase {
         $this->assertEmpty($this->mockOutputter->getOutput());
     }
 
+    public function testCmdMkDir_CreateNewDirectory_NewDirectoryAlreadyExist() {
+        $testDirName1 = "test1";
+        $testDirName2 = "test1";
+
+        $this->executeCommand("mkdir " . $testDirName1);
+
+        $testDirectory1 = $this->drive->getItemFromPath( $this->drive->getDriveLetter() . '\\' . $testDirName1 );
+
+        $this->executeCommand("mkdir " . $testDirName2);
+
+        $testDirectory2 = $this->drive->getItemFromPath( $this->drive->getDriveLetter() . '\\' . $testDirName2 );
+/*
+        $this->assertSame($testDirectory1->getParent(), $this->drive->getRootDirectory());
+        $this->assertSame($testDirectory2->getParent(), $this->drive->getRootDirectory());*/
+
+        $this->assertEquals("Sorry, the directory is already exist, choose other directory name", $this->mockOutputter->getOutput());
+
+        //$this->assertEmpty($this->mockOutputter->getOutput());
+    }
+
     public function testCmdMkDir_SingleLetterDirectory_NewDirectoryIsAdded(){
         $testDirName = "a";
         $this->executeCommand("mkdir " . $testDirName);
