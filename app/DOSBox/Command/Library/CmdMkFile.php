@@ -45,11 +45,16 @@ class CmdMkFile extends Command {
             $fileName = $this->params[0];
             $fileContent = null;
 
-            /*if($this->params[1] != null){
-                $fileContent = $this->params[1];
-            }else{
-                $fileContent = null;
-            }*/
+
+            if(count($this->params)>1){
+                if($this->params[1] != null){
+                    $fileContent = $this->params[1];
+                }else{
+                    $fileContent = null;
+                }
+            }
+
+            
             
             $newFile = new File($fileName, $fileContent);
             $this->getDrive()->getCurrentDirectory()->add($newFile);
