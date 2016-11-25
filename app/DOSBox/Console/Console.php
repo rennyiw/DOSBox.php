@@ -39,7 +39,7 @@ class Console {
             $this->invoker->executeCommand($line, $this->outputter);
         }
 
-       //$this->outputter->printLine("Goodbye!");
+       $this->outputter->printLine("Goodbye!");
 	   
     }
 }

@@ -45,9 +45,9 @@ class CmdCd extends Command {
     }
 
     public static function changeCurrentDirectory(Directory $destinationDirectory, IDrive $drive, IOutputter $outputter){
-        $success = $drive->changeCurrentDirectory($destinationDirectory);
+        //$success = $drive->changeCurrentDirectory($destinationDirectory);
 
-        if (!$success) {
+        if (!$drive->changeCurrentDirectory($destinationDirectory)) {
             $outputter->printLine(self::SYSTEM_CANNOT_FIND_THE_PATH_SPECIFIED);
         }
     }

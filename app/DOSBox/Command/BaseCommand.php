@@ -29,7 +29,10 @@ abstract class BaseCommand {
             $outputter->printLine(self::INCORRECT_SYNTAX);
             return false;
         }
-
+        /*else {
+            throw new Exception();
+        }
+*/
         if(!$this->checkParameterValues($outputter)) {
             if (!$outputter->hasCharactersPrinted())
                 $outputter->printLine(self::DEFAULT_ERROR_MESSAGE_WRONG_PARAMETER);
