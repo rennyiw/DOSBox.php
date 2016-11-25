@@ -30,7 +30,6 @@ class CmdMkDir extends Command {
         return false;
     }
     public function execute(IOutputter $outputter){
-        date_default_timezone_set("Asia/Bangkok");
         $d                      = date('m/d/Y h:i:s a');
         $currentDirectoryItems  = $this->getDrive()->getCurrentDirectory()->getContent();
         $isExist                = false;
@@ -39,26 +38,19 @@ class CmdMkDir extends Command {
             $nmfile = $exp[0];
             if($item->isDirectory()){
                 if($nmfile == $this->params[0]){
-//                if($item->getName() == $this->params[0]){
+                    //                if($item->getName() == $this->params[0]){
                     $isExist=true;
                 }
             }
-        }
-<<<<<<< HEAD
-        if($isExist==true){
-            $outputter->printLine("Sorry, the directory is already exist, choose other directory name" );
-        }
-        else{
-=======
 
 
+        }
         if($isExist){
             $outputter->printLine("Sorry, the directory is already exist, choose other directory name" );
         } else{
->>>>>>> d4c3e6c9216621e9d880fc4a7bbb6c1f6c26c38f
             for($i=0; $i < $this->getParameterCount(); $i++) {
                 $this->createDirectory($this->params[$i]." ".$d, $this->getDrive());
-//                $this->createDirectory($this->params[$i], $this->getDrive());
+                //                $this->createDirectory($this->params[$i], $this->getDrive());
             }
         }
 
@@ -68,6 +60,3 @@ class CmdMkDir extends Command {
         $drive->getCurrentDirectory()->add($newDirectory);
     }
 }
-
-
-
