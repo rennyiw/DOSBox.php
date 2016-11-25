@@ -38,7 +38,7 @@ class CmdHelp extends Command {
                 $outputter->printLine($key."\t".$value[0]);
             }
         }
-        else if($this->getParameterCount() == 1){
+        else {
             $kunci  = trim($this->getParameterAt(0));
             if (array_key_exists($kunci, $help)) {
                 $outputter->printLine($kunci."\t".$help[$kunci][0]);
@@ -46,9 +46,9 @@ class CmdHelp extends Command {
             else{
                 $outputter->printLine("Error : This command is not supported by the help utility");
             }
-        }
+        }/*
         else{
-            $outputter->printLine("Error : This command is not supported by the help utility");
-        }
+            $outputter->printLine("Error : This command is not supported by the help utility as well");
+        }*/
     }
 }

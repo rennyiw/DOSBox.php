@@ -53,9 +53,8 @@ class CmdMkDir extends Command {
         }
 
 
-        if($isExist==true){
+        if($isExist){
             $outputter->printLine("Sorry, the directory is already exist, choose other directory name" );
-            
         } else{
             for($i=0; $i < $this->getParameterCount(); $i++) {
                 $this->createDirectory($this->params[$i], $this->getDrive());
