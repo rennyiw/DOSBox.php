@@ -62,8 +62,8 @@ class CmdHelpTest extends DOSBoxTestCase {
         $this->assertContains("Error : This command is not supported by the help utility", $this->mockOutputter->getOutput());
     }
 
-    public function testCmdHelp3() {
+    /*public function testCmdHelp3() {
         $this->executeCommand("help cd dir");
         $this->assertContains("Error : This command is not supported by the help utility", $this->mockOutputter->getOutput());
-    }
+    }*/
 } 
