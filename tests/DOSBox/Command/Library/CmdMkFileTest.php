@@ -49,6 +49,26 @@ class CmdMkFileTest extends DOSBoxTestCase {
         $this->assertEquals($newFileContent, $createdFile->getFileContent());
     }
 
+        public function testCmdMkFileTest_CreateNewFile_NewFileAlreadyExist() {
+        $testFileName1 = "test1";
+        $testFileName2 = "test1";
+
+        $this->executeCommand("mkfile " . $testFileName1);
+
+        $testDirectory1 = $this->drive->getItemFromPath( $this->drive->getDriveLetter() . '\\' . $testFileName1 );
+
+        $this->executeCommand("mkfile " . $testFileName2);
+
+        $testDirectory2 = $this->drive->getItemFromPath( $this->drive->getDriveLetter() . '\\' . $testFileName2 );
+/*
+        $this->assertSame($testDirectory1->getParent(), $this->drive->getRootDirectory());
+        $this->assertSame($testDirectory2->getParent(), $this->drive->getRootDirectory());*/
+
+        $this->assertEquals("Sorry, the file name is already exist, choose other file name", $this->mockOutputter->getOutput());
+
+        //$this->assertEmpty($this->mockOutputter->getOutput());
+    }
+
     public function testCmdMkFile_NoParameters_ReportsError(){
         // To be implemented
     }
