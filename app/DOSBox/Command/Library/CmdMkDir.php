@@ -30,6 +30,7 @@ class CmdMkDir extends Command {
         return false;
     }
     public function execute(IOutputter $outputter){
+        date_default_timezone_set("Asia/Bangkok");
         $d                      = date('m/d/Y h:i:s a');
         $currentDirectoryItems  = $this->getDrive()->getCurrentDirectory()->getContent();
         $isExist                = false;
